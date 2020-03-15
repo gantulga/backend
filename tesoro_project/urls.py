@@ -5,11 +5,15 @@ from django.conf.urls.static import static
 from product_app import views
 from rest_framework import routers
 from hotel.api import HotelClientLogsViewSet, HotelRoomsViewSet
+from structure_app.api import SettingsViewSet
+from financial_app.api import FinanceWalletsViewSet
 from rest_framework.authtoken import views
 
 router = routers.DefaultRouter()
 router.register('hotel/clientlogs', HotelClientLogsViewSet, 'clientlogs')
 router.register('hotel/rooms', HotelRoomsViewSet, 'rooms')
+router.register('settings', SettingsViewSet, 'settings')
+router.register('finance/wallets', FinanceWalletsViewSet, 'wallets')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
