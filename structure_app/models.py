@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.auth import get_user_model
-from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MaxValueValidator, MinValueValidator
 from flask import request
 from django.db.models.signals import post_save, pre_save
@@ -67,24 +66,25 @@ class Client(Createdinfo):
 class Customer(Createdinfo):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, null=True, blank=True)
-    lastname = models.CharField(null=False, max_length=255)
+    lastname = models.CharField(null=True, max_length=255)
     firstname = models.CharField(null=False, max_length=255)
-    register = models.CharField(null=True, max_length=255)
-    address = models.CharField(null=False, max_length=255)
-    address2 = models.CharField(null=False, max_length=255)
-    workaddress = models.CharField(null=False, max_length=255)
-    mobile = PhoneNumberField(blank=False, null=True)
-    phone = PhoneNumberField(blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
+    register = models.CharField(null=False, max_length=255, unique=True)
+    address = models.CharField(null=True, max_length=255, default='')
+    address2 = models.CharField(null=True, max_length=255, default='')
+    workname = models.CharField(null=True, max_length=255, default='')
+    workaddress = models.CharField(null=True, max_length=255, default='')
+    mobile = models.IntegerField(blank=True, null=True, default=0)
+    phone = models.IntegerField(blank=True, null=True, default=0)
+    email = models.EmailField(blank=True, null=True, default=0)
     discount_rate = models.IntegerField(default=0, validators=[MinValueValidator(
         0), MaxValueValidator(100)], blank=True, null=True)
-    information = models.TextField(null=True)
+    information = models.TextField(null=True, default='')
 
-    class Meta:
-        unique_together = ('register', 'mobile')
+    # class Meta:
+    #     unique_together = ('register', 'mobile')
 
     def __str__(self):
-        return self.name
+        return self.lastname
 
 
 # Бүртгэлтэй үйлчилүүлэгчийн мэдээлэл, байнга үйлчилүүлж манайд өөрөө бүртгүүлсэн хүмүүс
@@ -96,14 +96,14 @@ class User_Profile(Modifiedinfo):
     register = models.CharField(null=False, max_length=255)
     address = models.CharField(null=False, max_length=255)
     address2 = models.CharField(null=True, max_length=255)
-    mobile = PhoneNumberField(blank=False, null=False)
-    phone = PhoneNumberField(blank=True, null=True)
+    mobile = models.IntegerField(blank=False, null=False)
+    phone = models.IntegerField(blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     information = models.TextField(null=True)
 
     who_are = models.CharField(blank=True, null=True, max_length=10)
     near_people_name = models.CharField(blank=True, null=True, max_length=30)
-    near_people_mobile = PhoneNumberField(blank=True, null=True)
+    near_people_mobile = models.IntegerField(blank=True, null=True)
     near_people_address = models.CharField(
         blank=True, null=True, max_length=255)
 

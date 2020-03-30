@@ -15,7 +15,7 @@ class HotelClientLogsSerializer(serializers.ModelSerializer):
 class HotelProductsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ('name', 'description', 'cost')
+        fields = ('id', 'name', 'description', 'cost')
 
 
 class HotelClientItemsSerializers(serializers.ModelSerializer):
@@ -32,4 +32,5 @@ class HotelRoomsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Client
-        fields = ['number', 'description', 'client_products', 'client_items']
+        fields = ['id', 'number', 'description',
+                  'client_products', 'client_items']

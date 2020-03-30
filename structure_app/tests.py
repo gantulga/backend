@@ -599,7 +599,8 @@ data = (
 	         "client":1,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -614,7 +615,8 @@ data = (
 	         "client":2,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -629,7 +631,8 @@ data = (
 	         "client":3,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -644,7 +647,8 @@ data = (
 	         "client":4,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -659,7 +663,8 @@ data = (
 	         "client":5,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -674,7 +679,8 @@ data = (
 	         "client":6,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -689,7 +695,8 @@ data = (
 	         "client":7,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -704,7 +711,8 @@ data = (
 	         "client":8,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -719,7 +727,8 @@ data = (
 	         "client":9,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -734,7 +743,8 @@ data = (
 	         "client":10,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -749,7 +759,8 @@ data = (
 	         "client":11,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -764,7 +775,8 @@ data = (
 	         "client":12,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -779,7 +791,8 @@ data = (
 	         "client":13,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -794,7 +807,8 @@ data = (
 	         "client":14,
 	         "division":3,
 	         "categories": [1, 2],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -809,7 +823,8 @@ data = (
 	         "client":1,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -824,7 +839,8 @@ data = (
 	         "client":2,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -839,7 +855,8 @@ data = (
 	         "client":3,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -854,7 +871,8 @@ data = (
 	         "client":4,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -869,7 +887,8 @@ data = (
 	         "client":5,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -884,7 +903,8 @@ data = (
 	         "client":6,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -899,7 +919,8 @@ data = (
 	         "client":7,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -914,7 +935,8 @@ data = (
 	         "client":8,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -929,7 +951,8 @@ data = (
 	         "client":9,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -944,7 +967,8 @@ data = (
 	         "client":10,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -959,7 +983,8 @@ data = (
 	         "client":11,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -974,7 +999,8 @@ data = (
 	         "client":12,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -989,7 +1015,8 @@ data = (
 	         "client":13,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   {
@@ -1004,7 +1031,8 @@ data = (
 	         "client":14,
 	         "division":3,
 	         "categories": [1, 3],
-	         "commodities": []
+	         "commodities": [],
+			 "division":3
 	      }
 	   },
 	   { 
@@ -3164,6 +3192,9 @@ for python_obj in python_list:
 						setattr(dbitem, k, getObject)
 					elif str(k) == "client":
 						getObject1 = Client.objects.get(pk=int(v))
+						setattr(dbitem, k, getObject1)
+					elif str(k) == "division":
+						getObject1 = Division.objects.get(pk=int(v))
 						setattr(dbitem, k, getObject1)
 					else:
 						setattr(dbitem, k, v)

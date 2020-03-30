@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -141,7 +142,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -165,13 +166,14 @@ REST_FRAMWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend')
 }
 
 # CORS_ORIGIN_WHITELIST = [
 #     'http://localhost:3000',
-#     'http://localhost:3000',
+#     'http://127.0.0.1:3000',
 #     'http://localhost:8000',
-#     'http://localhost:8000'
+#     'http://127.0.0.1:8000'
 # ]
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ALLOW_CREDENTIALS = True
@@ -186,3 +188,17 @@ CORS_ORIGIN_ALLOW_ALL = True
 #     'x-csrftoken',
 #     'x-requested-with',
 # )
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000'
+]
