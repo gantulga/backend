@@ -38,7 +38,8 @@ class Modifiedinfo(models.Model):
 class Division(Createdinfo):
     name = models.CharField(null=False, max_length=255)
     description = models.TextField(null=False)
-    users = models.ManyToManyField(User, db_table="auth_user_divisions")
+    users = models.ManyToManyField(
+        User, db_table="auth_user_divisions", related_name='divisions')
 
     def __str__(self):
         return self.name
@@ -51,6 +52,9 @@ class Client(Createdinfo):
         'Division', null=False, blank=False, on_delete=models.PROTECT, related_name="clients")
     number = models.IntegerField(null=False)
     description = models.TextField(null=False, max_length=255)
+    free = models.BooleanField(default=1)
+    clean = models.BooleanField(default=1)
+    minibarFull = models.BooleanField(default=1)
 
     class Meta:
         unique_together = ('division', 'number')
@@ -160,3 +164,20 @@ class Configuration_value(models.Model):
         null=True, max_length=2)
     hotel_must_leave_time = models.CharField(
         null=True, max_length=2)
+
+
+class Shift_rotation(Createdinfo):
+    fr_user = models.ForeignKey(User, related_name='shift_rotation_fr_user',
+                                null=False, blank=False, on_delete=models.DO_NOTHING)
+    to_user = models.ForeignKey(User, related_name='shift_rotation_to_user',
+                                null=False, blank=False, on_delete=models.DO_NOTHING)
+    fr_user_confirm = models.BooleanField(default=0)
+    to_user_confirm = models.BooleanField(default=0)
+    order_start_id = models.PositiveIntegerField(null=True)
+    order_stop_id = models.PositiveIntegerField(null=True)
+    order_amount = models.BigIntegerField(blank=True, null=True)
+    order_detial_start_id = models.PositiveIntegerField(null=True)
+    order_detial_stop_id = models.PositiveIntegerField(null=True)
+    order_detial_amount = models.BigIntegerField(blank=True, null=True)
+    payment_start_id = models.PositiveIntegerField(null=True)
+    payment_stop_id = models.PositiveIntegerField(null=True)

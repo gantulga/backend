@@ -91,7 +91,7 @@ class Product(Createdinfo):
                                  on_delete=models.DO_NOTHING, null=True, blank=True)
 
     def __str__(self):
-        return self.id
+        return self.name
 
     # def __unicode__(self):
     #     return self.id
@@ -140,7 +140,7 @@ class Item_transfer_type(Createdinfo):
 
 class Store(Createdinfo):
     name = models.CharField(null=False, max_length=30)
-    description = models.TextField(null=True, max_length=255)
+    store_info = models.TextField(null=True, max_length=255)
 
 # Түүхий эд нэмэгдэх, бүтээгдэхүүнд ороод хасагдах, ажилчидад олгох, шилжүүлэх бүх гүйлгээний мэдээлэл
 
@@ -162,15 +162,15 @@ class Item_transfer(Modifiedinfo):
     fr_division = models.ForeignKey(
         'structure_app.Division', related_name='sending_item_transfers', null=True, blank=True, on_delete=models.DO_NOTHING)
     to_division = models.ForeignKey('structure_app.Division', related_name='coming_item_transfers',
-                                    null=False, blank=False, on_delete=models.DO_NOTHING)
+                                    null=True, blank=True, on_delete=models.DO_NOTHING)
     fr_client = models.ForeignKey('structure_app.Client', related_name='sending_item_transfers',
                                   null=True, blank=True, on_delete=models.DO_NOTHING)
     to_client = models.ForeignKey('structure_app.Client', related_name='coming_item_transfers',
-                                  null=False, blank=False, on_delete=models.DO_NOTHING)
+                                  null=True, blank=True, on_delete=models.DO_NOTHING)
     fr_user = models.ForeignKey(User, related_name='sending_item_transfers',
-                                null=False, blank=False, on_delete=models.DO_NOTHING)
+                                null=True, blank=True, on_delete=models.DO_NOTHING)
     to_user = models.ForeignKey(User, related_name='coming_item_transfers',
-                                null=False, blank=False, on_delete=models.DO_NOTHING)
+                                null=True, blank=True, on_delete=models.DO_NOTHING)
     # Энэ шилжүүлгийг хянасан эсэх? мөн хэн хянасан
     is_confirmed = models.BooleanField(default=0)
     confirmed_by = models.ForeignKey(
@@ -194,18 +194,38 @@ class Item_transfer(Modifiedinfo):
 # Түүхий эдийн үлдэгдэл Clien болон ажилтанд ямар байгааг бүртгэх Balance table
 
 
-class Commodity_balance(Modifiedinfo):
-    division = models.ForeignKey('structure_app.Division', related_name='commodity_balances',
+class Item_balance(Modifiedinfo):
+    division = models.ForeignKey('structure_app.Division', related_name='item_balances',
                                  null=True, blank=True, on_delete=models.DO_NOTHING)
-    client = models.ForeignKey('structure_app.Client', related_name='commodity_balances',
+    client = models.ForeignKey('structure_app.Client', related_name='item_balances',
                                null=True, blank=True, on_delete=models.DO_NOTHING)
-    user = models.ForeignKey(User, related_name='commodity_balances',
+    user = models.ForeignKey(User, related_name='item_balances',
                              null=True, blank=True, on_delete=models.DO_NOTHING)
     commodity = models.ForeignKey(
-        'Commodity', on_delete=models.DO_NOTHING, null=False, related_name="commodity_balances")
+        'Commodity', on_delete=models.DO_NOTHING, null=True, blank=True, related_name="balances")
+    product = models.ForeignKey(
+        'Product', on_delete=models.DO_NOTHING, null=True, blank=True, related_name="balances")
     # Түүхий эдийн хэмжээ
-    quantity = models.PositiveIntegerField(null=False, blank=False)
-    size = models.PositiveIntegerField(null=False, blank=False)
+    quantity = models.PositiveIntegerField(null=True, blank=True)
+    size = models.PositiveIntegerField(null=True, blank=True)
+
+
+class Item_balance_log(Modifiedinfo):
+    shift_rotation = models.ForeignKey('structure_app.Shift_rotation', related_name='item_balance_logs',
+                                       null=False, blank=False, on_delete=models.DO_NOTHING)
+    division = models.ForeignKey('structure_app.Division', related_name='item_balance_logs',
+                                 null=True, blank=True, on_delete=models.DO_NOTHING)
+    client = models.ForeignKey('structure_app.Client', related_name='item_balance_logs',
+                               null=True, blank=True, on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, related_name='item_balance_logs',
+                             null=True, blank=True, on_delete=models.DO_NOTHING)
+    commodity = models.ForeignKey(
+        'Commodity', on_delete=models.DO_NOTHING, null=True, blank=True, related_name="item_balance_logs")
+    product = models.ForeignKey(
+        'Product', on_delete=models.DO_NOTHING, null=True, blank=True, related_name="item_balance_logs")
+    # Түүхий эдийн хэмжээ
+    quantity = models.PositiveIntegerField(null=True, blank=True)
+    size = models.PositiveIntegerField(null=True, blank=True)
 
 
 # Барилгын үндсэн хөрөнгийн жагсаалт байх юм.

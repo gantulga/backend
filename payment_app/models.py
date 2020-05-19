@@ -63,11 +63,15 @@ class Order_detial(Modifiedinfo):
     quantity = models.PositiveIntegerField(null=False, default=1)
     fr_date = models.DateTimeField(null=True, blank=True)
     to_date = models.DateTimeField(null=True, blank=True)
+    discount_rate = models.IntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
     subtotal = models.DecimalField(
         max_digits=14, decimal_places=2, null=False, blank=False)
     is_deleted = models.BooleanField(default=0)
     why_deleted = models.TextField(null=True, blank=True)
     deleted_date = models.DateTimeField(null=True, blank=True)
+    fr_client = models.ForeignKey('structure_app.Client', on_delete=models.DO_NOTHING,
+                                  related_name="sent_order_detials", null=True, blank=True)
 
 # Захиалгын тооцоонууд
 
@@ -128,6 +132,8 @@ class Payment_bills(Modifiedinfo):
 
 
 class Pos_account_consolidation(Modifiedinfo):
+    shift_rotation = models.ForeignKey('structure_app.Shift_rotation', related_name='pos_account_consolidation',
+                                       null=False, blank=False, on_delete=models.DO_NOTHING)
     division = models.ForeignKey('structure_app.Division', null=False, blank=False,
                                  on_delete=models.DO_NOTHING, related_name="Pos_account_consolidations")
     fr_date = models.DateTimeField(null=False, blank=False)
