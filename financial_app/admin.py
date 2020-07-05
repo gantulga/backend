@@ -5,13 +5,15 @@ admin.site.site_header = 'Tesoro Center - Хэрэглэгчийн програ�
 
 
 class WalletAdmin(admin.ModelAdmin):
-	list_display = ('get_wallet_owner', 'account')
+    list_display = ('get_wallet_owner', 'account')
 
-	def get_wallet_owner(self, obj):
-		return obj.owner.first_name
+    def get_wallet_owner(self, obj):
+        return obj.owner.first_name
+
 
 class MoneyTransferTypeAdmin(admin.ModelAdmin):
-	list_display = ('name', 'description')
+    list_display = ('name', 'description')
+
 
 # Register your models here.
 admin.site.register(Investment)

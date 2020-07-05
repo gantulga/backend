@@ -211,8 +211,8 @@ class Item_balance(Modifiedinfo):
 
 
 class Item_balance_log(Modifiedinfo):
-    shift_rotation = models.ForeignKey('structure_app.Shift_rotation', related_name='item_balance_logs',
-                                       null=False, blank=False, on_delete=models.DO_NOTHING)
+    shift_work = models.ForeignKey('structure_app.Shift_work', related_name='item_balance_logs',
+                                   null=False, blank=False, on_delete=models.DO_NOTHING)
     division = models.ForeignKey('structure_app.Division', related_name='item_balance_logs',
                                  null=True, blank=True, on_delete=models.DO_NOTHING)
     client = models.ForeignKey('structure_app.Client', related_name='item_balance_logs',

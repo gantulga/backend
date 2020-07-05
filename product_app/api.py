@@ -12,64 +12,64 @@ from django.db.models import Q
 class ItemTransfersViewSet(viewsets.ModelViewSet):
     # Item transfer viewset
     queryset = Item_transfer.objects.all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = ItemTransfersSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 
 class ProductsViewSet(viewsets.ModelViewSet):
     # Commodities viewset
     queryset = Product.objects.all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = ProductsSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 
 class CommoditiesViewSet(viewsets.ModelViewSet):
     # Commodities viewset
     queryset = Commodity.objects.all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = CommoditiesSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 
 class BalancesViewSet(viewsets.ModelViewSet):
     # Commodities viewset
     queryset = Item_balance.objects.all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = BalancesSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 
 class StoresViewSet(viewsets.ModelViewSet):
     # Commodities viewset
     queryset = Store.objects.all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = StoresSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 
 class TransferTypesViewSet(viewsets.ModelViewSet):
     # Commodities viewset
     queryset = Item_transfer_type.objects.all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = TransferTypesSerializer
     authentication_classes = (TokenAuthentication,)
 
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 
 class ClientProductsViewSet(generics.ListAPIView):
     #queryset = Item_balance.objects.filter().all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = ClientItemsSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         """
@@ -82,10 +82,10 @@ class ClientProductsViewSet(generics.ListAPIView):
 
 class ClientCommoditiesViewSet(generics.ListAPIView):
     #queryset = Item_balance.objects.filter().all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = ClientItemsSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         """
@@ -98,10 +98,10 @@ class ClientCommoditiesViewSet(generics.ListAPIView):
 
 class UserProductsViewSet(generics.ListAPIView):
     #queryset = Item_balance.objects.filter().all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = ClientItemsSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         """
@@ -114,10 +114,10 @@ class UserProductsViewSet(generics.ListAPIView):
 
 class UserCommoditiesViewSet(generics.ListAPIView):
     #queryset = Item_balance.objects.filter().all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = ClientItemsSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         user = self.kwargs['user']
@@ -126,11 +126,11 @@ class UserCommoditiesViewSet(generics.ListAPIView):
 
 class DivisionItemBalancesViewSet(generics.ListAPIView):
     #queryset = Item_balance.objects.filter().all()
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     serializer_class = DivisionItemBalancesSerializer
     authentication_classes = (TokenAuthentication,)
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         division = self.kwargs['division']
-        return Item_balance.objects.filter(division=division).order_by('client')
+        return Item_balance.objects.filter(division=division)

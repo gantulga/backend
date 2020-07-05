@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Item_transfer, Commodity, Product, Store, Item_transfer_type, Item_balance
 from django.contrib.auth import get_user_model
 from datetime import datetime
+from structure_app.serializers import UsersSerializer
 import json
 
 User = get_user_model()
@@ -158,8 +159,12 @@ class ProductsSerializer(serializers.ModelSerializer):
 
 
 class BalancesSerializer(serializers.ModelSerializer):
+    # user = UsersSerializer(many=False, read_only=True)
+
     class Meta:
         model = Item_balance
+        # fields = ['id', 'client', 'commodity',
+        #           'division', 'product', 'quantity', 'size', 'user']
         fields = '__all__'
         # depth = 1
 

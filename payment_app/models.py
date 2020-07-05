@@ -49,6 +49,8 @@ class Order(Modifiedinfo):
         'product_app.Product', through='Order_detial', related_name="products")
     payments = models.ManyToManyField(
         'Payment', through='Order_payments', related_name="payments")
+    shift_work = models.ForeignKey('structure_app.Shift_work', related_name='orders',
+                                   null=True, blank=True, on_delete=models.DO_NOTHING)
 
 # Захиалга дотрох бүтээгдэхүүнүүд
 
@@ -61,6 +63,7 @@ class Order_detial(Modifiedinfo):
     client = models.ForeignKey('structure_app.Client', on_delete=models.DO_NOTHING,
                                related_name="client_detials", null=True, blank=True)
     quantity = models.PositiveIntegerField(null=False, default=1)
+    discount = models.PositiveIntegerField(null=False, default=0)
     fr_date = models.DateTimeField(null=True, blank=True)
     to_date = models.DateTimeField(null=True, blank=True)
     discount_rate = models.IntegerField(
@@ -72,6 +75,8 @@ class Order_detial(Modifiedinfo):
     deleted_date = models.DateTimeField(null=True, blank=True)
     fr_client = models.ForeignKey('structure_app.Client', on_delete=models.DO_NOTHING,
                                   related_name="sent_order_detials", null=True, blank=True)
+    shift_work = models.ForeignKey('structure_app.Shift_work', related_name='order_detials',
+                                   null=True, blank=True, on_delete=models.DO_NOTHING)
 
 # Захиалгын тооцоонууд
 
@@ -117,6 +122,10 @@ class Payment(Modifiedinfo):
     wallet = models.ForeignKey('financial_app.Wallet', null=False, blank=False,
                                on_delete=models.DO_NOTHING, default=999, related_name="payments")
     bills = models.ManyToManyField('Bill', through='Payment_bills')
+    shift_work = models.ForeignKey('structure_app.Shift_work', related_name='payments',
+                                   null=True, blank=True, on_delete=models.DO_NOTHING)
+    division = models.ForeignKey('structure_app.Division', null=True, blank=True,
+                                 on_delete=models.DO_NOTHING, related_name="payments")
 
 
 # Тооцооны баримтууд
@@ -132,8 +141,8 @@ class Payment_bills(Modifiedinfo):
 
 
 class Pos_account_consolidation(Modifiedinfo):
-    shift_rotation = models.ForeignKey('structure_app.Shift_rotation', related_name='pos_account_consolidation',
-                                       null=False, blank=False, on_delete=models.DO_NOTHING)
+    shift_work = models.ForeignKey('structure_app.Shift_work', related_name='pos_account_consolidation',
+                                   null=True, blank=True, on_delete=models.DO_NOTHING)
     division = models.ForeignKey('structure_app.Division', null=False, blank=False,
                                  on_delete=models.DO_NOTHING, related_name="Pos_account_consolidations")
     fr_date = models.DateTimeField(null=False, blank=False)

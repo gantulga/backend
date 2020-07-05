@@ -166,18 +166,13 @@ class Configuration_value(models.Model):
         null=True, max_length=2)
 
 
-class Shift_rotation(Createdinfo):
-    fr_user = models.ForeignKey(User, related_name='shift_rotation_fr_user',
-                                null=False, blank=False, on_delete=models.DO_NOTHING)
-    to_user = models.ForeignKey(User, related_name='shift_rotation_to_user',
-                                null=False, blank=False, on_delete=models.DO_NOTHING)
-    fr_user_confirm = models.BooleanField(default=0)
-    to_user_confirm = models.BooleanField(default=0)
-    order_start_id = models.PositiveIntegerField(null=True)
-    order_stop_id = models.PositiveIntegerField(null=True)
-    order_amount = models.BigIntegerField(blank=True, null=True)
-    order_detial_start_id = models.PositiveIntegerField(null=True)
-    order_detial_stop_id = models.PositiveIntegerField(null=True)
-    order_detial_amount = models.BigIntegerField(blank=True, null=True)
-    payment_start_id = models.PositiveIntegerField(null=True)
-    payment_stop_id = models.PositiveIntegerField(null=True)
+class Shift_work(Createdinfo):
+    division = models.ForeignKey(
+        'Division', null=False, blank=False, on_delete=models.PROTECT, related_name="Shift_works")
+    worker = models.ForeignKey(User, related_name='shift_works',
+                               null=True, blank=True, on_delete=models.DO_NOTHING)
+    worker_confirm = models.BooleanField(default=0)
+    controller = models.ForeignKey(User, related_name='controller_shift_works',
+                                   null=True, blank=True, on_delete=models.DO_NOTHING)
+    controller_confirm = models.BooleanField(default=0)
+    finished = models.BooleanField(default=0)

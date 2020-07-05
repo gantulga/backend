@@ -93,7 +93,7 @@ class Wallet(Createdinfo):
     account = models.BigIntegerField(null=True)
     balance = models.DecimalField(
         max_digits=14, decimal_places=2, null=False, blank=False, default=0)
-    owner = models.ForeignKey(User, related_name='%(class)s_owner',
+    owner = models.ForeignKey(User, related_name='wallets',
                               null=True, blank=True, on_delete=models.DO_NOTHING)
     msg_info_fee = models.DecimalField(
         max_digits=14, decimal_places=2, null=True, blank=True, default=0)
@@ -101,6 +101,8 @@ class Wallet(Createdinfo):
         max_digits=14, decimal_places=2, null=True, blank=True, default=0)
     bank_transfer_fee = models.DecimalField(
         max_digits=14, decimal_places=2, null=True, blank=True, default=0)
+    division = models.ForeignKey('structure_app.Division', related_name='wallets',
+                                 null=True, blank=True, on_delete=models.DO_NOTHING)
 
 # Төсвийн ангилал
 

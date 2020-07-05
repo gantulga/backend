@@ -58,3 +58,11 @@ class Hotel_client_item(models.Model):
     product = models.ForeignKey('product_app.Product', null=False, blank=False,
                                 on_delete=models.DO_NOTHING, related_name='client_items')
     quantity = models.IntegerField(blank=False, null=False, default=0)
+
+
+class Hotel_client_item_eelj(models.Model):
+    client = models.ForeignKey('structure_app.Client', null=False, blank=False,
+                               on_delete=models.DO_NOTHING, related_name='client_items_eelj')
+    product = models.ForeignKey('product_app.Product', null=False, blank=False,
+                                on_delete=models.DO_NOTHING, related_name='client_items_eelj')
+    quantity = models.IntegerField(blank=False, null=False, default=0)
